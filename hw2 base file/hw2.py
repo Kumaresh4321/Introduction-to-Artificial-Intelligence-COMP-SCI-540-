@@ -40,8 +40,7 @@ def shred(filename):
     X = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0, 'G': 0, 'H': 0, 'I': 0, 'J': 0, 'K': 0, 'L': 0, 'M': 0, 'N': 0, 'O': 0, 'P': 0, 'Q': 0, 'R': 0, 'S': 0, 'T': 0, 'U': 0, 'V': 0, 'W': 0, 'X': 0, 'Y': 0, 'Z': 0}
     with open (filename,encoding='utf-8') as f:
         for line in f:
-            stripped = line.strip()
-            for c in stripped:
+            for c in line:
                 c = c.upper()
                 try:
                     X[c] += 1
@@ -101,7 +100,16 @@ print("{:.4f}".format(F_spanish))
 #Q4
 # Probability of English given Spanish
 power_term = F_spanish - F_eng
-denominator = 1 + math.exp(power_term)
-probability = 1/denominator
-print("Q4")
-print("{:.4f}".format(probability)) 
+if (power_term>= 100):
+    print("Q4")
+    probability = 0
+    print("{:.4f}".format(probability)) 
+elif(power_term<= -100):
+    probability = 1
+    print("Q4")
+    print("{:.4f}".format(probability)) 
+else:
+    denominator = 1 + math.exp(power_term)
+    probability = 1/denominator
+    print("Q4")
+    print("{:.4f}".format(probability)) 
